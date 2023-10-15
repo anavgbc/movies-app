@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { MoviesService } from '../../../services/TMDBSerivce'
-import { token } from '../../../utils/token';
 defineProps({
     movie: {
         type: Object,
@@ -8,15 +6,6 @@ defineProps({
     }
 })
 
-const service = new MoviesService(token)
-
-const handleClick = async () => {
-    const populars = await service.listPopularMovies();
-    const topRated = await service.listTopRatedMovies();
-
-    console.log(populars.results);
-    console.log(topRated);
-};
 
 </script>
 
@@ -40,7 +29,7 @@ const handleClick = async () => {
             </v-card-text>
         </v-card-item>
         <v-card-item class="py-0 my-0 px-7">
-            <v-btn variant="elevated" class="bg-dark-1" prepend-icon="mdi-play" @click="handleClick">
+            <v-btn variant="elevated" class="bg-dark-1" prepend-icon="mdi-play">
                 Play
             </v-btn>
             <v-btn variant="text" prepend-icon="mdi-heart-outline" class="ms-3" :ripple="false" />
