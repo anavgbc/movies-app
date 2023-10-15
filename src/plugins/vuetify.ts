@@ -14,7 +14,7 @@ const globalTheme: ThemeDefinition = {
         'red-1': '#A32727',
 
         'text-primary': '#FFFFFF',
-        'text-secondary': '#D9D9D9'
+        'text-secondary': '#D9D9D9',
     },
 
 };
