@@ -8,6 +8,13 @@ import '@mdi/font/css/materialdesignicons.css';
 const globalTheme: ThemeDefinition = {
     dark: false,
     colors: {
+        'dark-1': '#070A0D',
+        'dark-2': '#0C1115',
+
+        'red-1': '#A32727',
+
+        'text-primary': '#FFFFFF',
+        'text-secondary': '#D9D9D9',
     },
 
 };
