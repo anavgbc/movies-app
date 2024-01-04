@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { TvShowShape } from '../types/models/tvShows/tvShows.types';
-import { Actor } from '../types/models/cast';
+import { Actor } from '../types/models/actor';
 
 export const useTvShowStore = defineStore('tvShow', {
     state: () => ({
