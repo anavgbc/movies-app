@@ -8,7 +8,12 @@ export const useMovieStore = defineStore('movies', {
         moviesByGenre: {} as {
             title: string;
             movies: MovieShape[]
-        }
+        },
+        selectedMovie: {} as any,
+        selectedMovieImages: [] as any,
+        selectedMovieCast: [] as any,
+        selectedMovieSimilar: [] as any,
+        selectedMovieReviews: [] as any,
     }),
     actions: {
         setPopularMovies(movies: MovieShape[]) {
@@ -22,6 +27,21 @@ export const useMovieStore = defineStore('movies', {
             movies: MovieShape[]
         }) {
             this.moviesByGenre = movies;
-        }
+        },
+        setSelectedMovie(movie: any) {
+            this.selectedMovie = movie;
+        },
+        setSelectedMovieImages(images: any[]) {
+            this.selectedMovieImages = images;
+        },
+        setSelectedMovieCast(castList: any[]) {
+            this.selectedMovieCast = castList;
+        },
+        setSelectedMovieSimilar(similarList: any[]) {
+            this.selectedMovieSimilar = similarList;
+        },
+        setSelectedMovieReview(reviewList: any[]) {
+            this.selectedMovieReviews = reviewList;
+        },
     }
 })
