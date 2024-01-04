@@ -24,72 +24,31 @@ const showService = new TvShowService(token);
 
 
 const movie = ref()
-// const imagePath = ref<{ path: string; aspect_ratio: number } | null>(null)
-
-// const allImages = ref()
-
-// const castList = ref()
-// const reviewsList = ref()
-// const similarList = ref()
 
 onBeforeMount(async () => {
     console.log(router.params)
 
     if (type === 'movie') {
         const movie = await movieService.getMovieById(id);
-        movieStore.setSelectedMovie(movie.data);
-
         const images = await movieService.getMovieImages(id);
+
+        movieStore.setSelectedMovie(movie.data);
+        movieStore.setSelectedMovieReview(movie.data.reviews.results);
+        movieStore.setSelectedMovieCast(movie.data.credits.cast);
+        movieStore.setSelectedMovieSimilar(movie.data.similar.results);
+
         movieStore.setSelectedMovieImages(images.data.backdrops);
-
-        const reviews = await movieService.getMovieReviews(id);
-        movieStore.setSelectedMovieReview(reviews.data.results);
-
-        const cast = await movieService.getMovieCredits(id);
-        movieStore.setSelectedMovieCast(cast.data.cast);
-
-        const similar = await movieService.getMovieSimilar(id);
-        movieStore.setSelectedMovieSimilar(similar.data.results);
     } else {
 
-        // const tvShow = await showService.getShowById(id);
-        // movieStore.setSelectedMovie(tvShow.data);
+        const { data: tvShow } = await showService.getShowById(id);
+        const { data: images } = await showService.getShowImages(id);
 
-        // const images = await showService.getShowImages(id);
-        // movieStore.setSelectedMovieImages(images.data.backdrops);
-
-        // const reviews = await movieService.getMovieReviews(id);
-        // movieStore.setSelectedMovieReview(reviews.data.results);
-
-        // const cast = await movieService.getMovieCredits(id);
-        // movieStore.setSelectedMovieCast(cast.data.cast);
-
-        // const similar = await movieService.getMovieSimilar(id);
-        // movieStore.setSelectedMovieSimilar(similar.data.results);
-
-        // const result = await showService.getShowById(id);
-        // movie.value = result;
-        // const images = await showService.getShowImages(id);
-        // console.log('result:', images)
-        // allImages.value = images.data.backdrops;
-
-        // const reviews = await showService.getShowReviews(id);
-        // console.log('reviews', reviews.data.results)
-        // reviewsList.value = reviews.data.results;
-
-        // const cast = await showService.getShowCredits(id);
-        // console.log('cast: ', cast.data.cast)
-        // castList.value = cast.data.cast
-
-        // const similar = await showService.getShowSimilar(id);
-
-        // console.log('similar: ', similar.data.results)
-        // similarList.value = similar.data.results;
-
+        tvShowStore.setSelectedShow(tvShow);
+        tvShowStore.setSelectedShowCast(tvShow.credits.cast);
+        tvShowStore.setSelectedShowReview(tvShow.reviews.results);
+        tvShowStore.setSelectedShowSimilar(tvShow.similar.results)
+        tvShowStore.setSelectedShowImages(images.backdrops);
     }
-
-    // console.log(`${imageUrlBase}/${images.value.backdrops[5].file_path}`)
-
 })
 
 </script>
