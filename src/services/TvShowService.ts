@@ -34,7 +34,7 @@ export class TvShowService extends ApiService implements TvShowService {
     }
     public async getShowById(id: string): Promise<any> {
         try {
-            const response = await this.apiInstance.get(`/tv/${id}`);
+            const response = await this.apiInstance.get(`/tv/${id}?append_to_response=credits,similar,reviews`);
 
             return response;
         } catch (err) {
