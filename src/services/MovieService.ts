@@ -34,7 +34,7 @@ export class MoviesService extends ApiService implements MoviesService {
     }
     public async getMovieById(id: string): Promise<any> {
         try {
-            const response = await this.apiInstance.get(`/movie/${id}`);
+            const response = await this.apiInstance.get(`/movie/${id}?append_to_response=credits,similar,reviews`);
 
             return response;
         } catch (err) {
